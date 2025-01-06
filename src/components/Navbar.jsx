@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import Modal from "../ui/Modal";
+import AddEditHabitForm from "./AddEditHabitForm";
 
 function Navbar() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <nav className="bg-primary-800 text-primary-50 p-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -9,11 +14,18 @@ function Navbar() {
         </Link>
         <div className="flex space-x-4">
           <Link
+            // to="/add-habit"
+            onClick={() => setShowForm(true)}
+            className="hover:scale-105 transition-transform duration-200 font-semibold "
+          >
+            Add Habit
+          </Link>
+          <Link
             to="/"
             className="hover:scale-105 transition-transform duration-200 font-semibold"
           >
             Dashboard
-          </Link>
+          </Link>{" "}
           <Link
             to="/weekly-progress"
             className="hover:scale-105 transition-transform duration-200 font-semibold"
@@ -21,6 +33,11 @@ function Navbar() {
             Weekly Progress
           </Link>
         </div>
+        {showForm && (
+          <Modal onShowForm={setShowForm}>
+            <AddEditHabitForm onShowForm={setShowForm} />
+          </Modal>
+        )}
       </div>
     </nav>
   );

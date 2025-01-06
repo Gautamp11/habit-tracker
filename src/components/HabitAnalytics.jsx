@@ -1,10 +1,24 @@
-import { ArcElement, Legend, Tooltip, Chart as ChartJS } from "chart.js";
+import {
+  ArcElement,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Tooltip,
+  Legend,
+  Chart as ChartJS,
+} from "chart.js";
 import { Pie, Bar } from "react-chartjs-2";
-import { HiOutlineArrowCircleRight } from "react-icons/hi";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+// Register necessary components
+ChartJS.register(
+  ArcElement,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Tooltip,
+  Legend
+);
 
 function HabitAnalytics() {
   const habits = useSelector((state) => state.habits.habits);
@@ -48,11 +62,11 @@ function HabitAnalytics() {
 
   // Bar chart data for individual habit percentages
   const barChartData = {
-    labels: habitCompletionData.map((habit) => habit.habit), // Habit names as X-axis labels
+    labels: habitCompletionData.map((habit) => habit.habit),
     datasets: [
       {
         label: "Completion Percentage",
-        data: habitCompletionData.map((habit) => habit.percentage), // Completion percentages as Y-axis values
+        data: habitCompletionData.map((habit) => habit.percentage),
         backgroundColor: "#0c4a6e",
         borderColor: "#0c4a6e",
         borderWidth: 1,
@@ -61,7 +75,7 @@ function HabitAnalytics() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-4 rounded grid grid-cols-2 items-center gap-2 bg-primary-100 shadow-lg mt-4 ">
+    <div className="max-w-lg mx-auto p-4 rounded grid grid-cols-2 items-center gap-2 bg-primary-100 shadow-lg mt-4">
       <p className="text-left px-2">
         Total Habits: <span className="font-bold">{totalHabits}</span>
       </p>
@@ -82,7 +96,7 @@ function HabitAnalytics() {
             <h3 className="mt-4 text-left">Habits Completed This Week</h3>
             <ul>
               {completedHabits.map((habit) => (
-                <li key={habit.id} className="text-lg font-bold text-left ">
+                <li key={habit.id} className="text-lg font-bold text-left">
                   {habit.name}
                 </li>
               ))}

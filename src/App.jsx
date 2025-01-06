@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AppLayout from "./components/AppLayout";
 import Dashboard from "./pages/Dashboard";
 import WeeklyProgress from "./pages/WeeklyProgress";
@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<AppLayout />}>
-          <Route index element={<Dashboard />} />
+          <Route index element={<Navigate to="/dashboard" />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="add-habit" element={<Addhabit />} />
           <Route path="weekly-progress" element={<WeeklyProgress />} />

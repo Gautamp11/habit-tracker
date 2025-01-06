@@ -1,18 +1,17 @@
 import React, { useEffect } from "react";
 
 function Modal({ children, onShowForm }) {
-  const handleKeyDown = (e) => {
-    if (e.key === "Escape") {
-      onShowForm(false); // Close modal on ESC key press
-    }
-  };
-
   useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        onShowForm(false); // Close modal on ESC key press
+      }
+    };
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [onShowForm]);
 
   const closeModal = (e) => {
     if (e.target.id === "modal-overlay") {
@@ -26,7 +25,7 @@ function Modal({ children, onShowForm }) {
       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
       onClick={closeModal}
     >
-      <div className="bg-white p-6 rounded-lg relative shadow-lg max-w-md w-full">
+      <div className="bg-white p-6 rounded-lg relative shadow-lg max-w-md w-full text-primary-800">
         <button
           className="absolute top-2 right-2 text-black font-bold"
           onClick={() => onShowForm(false)}

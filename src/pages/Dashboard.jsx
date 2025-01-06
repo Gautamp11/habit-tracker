@@ -16,7 +16,7 @@ function Dashboard() {
   const [searchParams, setSearchParams] = useSearchParams();
   const filter = searchParams.get("filter") || "all";
   const sortBy = searchParams.get("sort") || "name";
-  const [search, setSearch] = useState("");
+  const search = searchParams.get("search") || "";
 
   const handleAddHabit = () => {
     setShowForm(true);
@@ -25,9 +25,8 @@ function Dashboard() {
   function handleSort(value) {
     setSearchParams({ filter: filter, sort: value });
   }
-
-  function handleSearch(search) {
-    setSearch(search);
+  function handleSearch(value) {
+    setSearchParams({ filter, sort: sortBy, search: value });
   }
 
   const filteredHabits = habits
