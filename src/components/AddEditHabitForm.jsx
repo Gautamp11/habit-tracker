@@ -21,8 +21,6 @@ function AddEditHabitForm({ onShowForm, habit }) {
     }
     e.preventDefault();
     if (habit) {
-      console.log("I'm inside habit check");
-
       dispatch(updateHabit({ id: habit.id, name, description }));
     } else {
       dispatch(addHabit({ id: Date.now(), name, description }));

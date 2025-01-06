@@ -63,7 +63,7 @@ function Dashboard() {
   return (
     <div className="text-center max-w-5xl min-h-screen mx-auto">
       <h2 className="text-3xl font-bold mb-4 mt-4">Your Habits</h2>
-      <div className="flex justify-center gap-4 items-center mb-8">
+      <div className="flex-col md:flex md:flex-row justify-center gap-4 items-center mb-8 ">
         <Search onSearchQuery={handleSearch} />
         <Filter filter={filter} setSearchParams={setSearchParams} />
         <Sort sortBy={sortBy} onSort={handleSort} />
