@@ -10,7 +10,6 @@ function App() {
         <Route element={<AppLayout />}>
           <Route index element={<Navigate to="/dashboard" />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="add-habit" element={<Addhabit />} />
           <Route path="weekly-progress" element={<WeeklyProgress />} />
           <Route path="*" element={<div>Not Found</div>} />
         </Route>
