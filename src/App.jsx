@@ -2,7 +2,6 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AppLayout from "./components/AppLayout";
 import Dashboard from "./pages/Dashboard";
 import WeeklyProgress from "./pages/WeeklyProgress";
-import Addhabit from "./pages/Addhabit";
 
 function App() {
   return (
